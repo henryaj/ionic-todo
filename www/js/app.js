@@ -4,12 +4,26 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
-.controller('TodoController', function($scope) {
+.controller('TodoController', function($scope, $ionicPopup) {
   $scope.tasks = [
     { title: "First", completed: true },
     { title: "Second", completed: false },
     { title: "Third", completed: false }
   ];
+
+  $scope.newTask = function () {
+    $ionicPopup.prompt({
+      title: "New Task",
+      template: "Enter task:",
+      inputPlaceholder: "What do you need to get done?",
+      okText: "Done"
+    }).then(function(response) {
+      if (response) $scope.tasks.push(
+        { title: response, completed: false }
+      )
+    })
+  }
+
 })
 
 .run(function($ionicPlatform) {
