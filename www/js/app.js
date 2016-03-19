@@ -17,10 +17,20 @@ angular.module('starter', ['ionic'])
       template: "Enter task:",
       inputPlaceholder: "What do you need to get done?",
       okText: "Done"
-    }).then(function(response) {
+    }).then(function (response) {
       if (response) $scope.tasks.push(
         { title: response, completed: false }
       )
+    })
+  }
+
+  $scope.editTask = function (task) {
+    $scope.data = { response: task.title };
+    $ionicPopup.prompt({
+      title: "Edit Task",
+      scope: $scope
+    }).then(function (response) {
+      if (response !== undefined) task.title = $scope.data.response
     })
   }
 

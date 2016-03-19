@@ -37,6 +37,18 @@
             ng-click="task.completed = !task.completed"
             ng-class="{complete: task.completed}"
             class="item-icon-right">
+
+            <i class="icon ion-ios-arrow-left"></i>
+            <ion-option-button class="button-assertive"
+                               ng-click="tasks.splice($index, 1)">
+              Delete
+            </ion-option-button>
+
+            <ion-option-button class="button-energized"
+                               ng-click="editTask(task)">
+              Edit
+            </ion-option-button>
+
             {{task.title}}
           </ion-item>
         </ion-list>
