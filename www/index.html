@@ -29,7 +29,11 @@
       </ion-header-bar>
       <ion-content>
         <ion-list>
-          <ion-item ng-repeat="task in tasks" class="item-icon-right" ng-class="{complete: task.completed}">
+          <ion-item
+            ng-repeat="task in tasks"
+            ng-click="task.completed = !task.completed"
+            ng-class="{complete: task.completed}"
+            class="item-icon-right">
             {{task.title}}
           </ion-item>
         </ion-list>
