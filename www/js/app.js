@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('starter', ['ionic'])
-.controller('TodoController', function($scope, $ionicPopup) {
+.controller('TodoController', function($scope, $ionicPopup, $ionicListDelegate) {
   $scope.tasks = [
     { title: "First", completed: true },
     { title: "Second", completed: false },
@@ -31,6 +31,7 @@ angular.module('starter', ['ionic'])
       scope: $scope
     }).then(function (response) {
       if (response !== undefined) task.title = $scope.data.response
+      $ionicListDelegate.closeOptionButtons()
     })
   }
 
